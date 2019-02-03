@@ -1,0 +1,4 @@
+Barber: barber User: qwerty, Phone: 123456, Date and time: 2019-02-22, @{color}.
+Barber: barber User: qwerty, Phone: 123456, Date and time: 2019-02-22, @{color}.
+Barber: barber User: qwerty, Phone: 123456, Date and time: 2019-02-22, @{color}.
+Barber: barber User: , Phone: , Date and time: , @{color}.
