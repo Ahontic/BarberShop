@@ -2,6 +2,22 @@
 require 'rubygems'
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sqlite3'
+
+
+configure do
+	db = SQLite3::Database.new 'BarberShop.sqlite'	
+	db.execute 'CREATE TABLE IF NOT EXISTS
+		"users"
+		(
+		"id" INTEGER PRIMARY KEY AUTOINCREMENT,
+		"Name" TEXT,
+		"Phone" TEXT,
+		"Datestamp" TEXT,
+		"Barber" TEXT,
+		"Color" TEXT)';
+end
+
 
 get '/' do
 	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>!"			
@@ -53,6 +69,17 @@ post '/visit' do
 		return erb :visit
 	end
 
+	db.execute 'insert into
+	users
+	(
+		Name,
+		Phone,
+		Datestamp,
+		Barber,
+		Color
+	)
+		values(?, ?, ?, ?, ?)', [@name,@phone,@datetime,@barber,@color]
+
 		@title 	=	"Thank You"
 		@message = "Dear #{@username}, your master is #{@barber}, we'll be waiting for you at #{@date}, Color:#{@color}"
 		
@@ -64,6 +91,7 @@ post '/visit' do
 
 		erb :message
 
+		
 end
 
 post '/contacts' do
