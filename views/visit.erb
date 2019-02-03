@@ -4,9 +4,9 @@
 
   <select name="barber" class="custom-select custom-select-lg mb-3 ccc">
   <option selected>Выберите вашего мастера</option>
-  <option value="Walter White">Walter White</option>
-  <option value="Jessie Pinkman">Jessie Pinkman</option>
-  <option value="Gus Fring">Gus Fring</option>
+  <option <%= @barber == 'Walter White' ? 'selected' : '' %> value="Walter White">Walter White</option>
+  <option <%= @barber == 'Jessie Pinkman' ? 'selected' : '' %> value="Jessie Pinkman">Jessie Pinkman</option>
+  <option <%= @barber == 'Gus Fring' ? 'selected' : '' %> value="Gus Fring">Gus Fring</option>
 </select>
 
   <div class="form-group">
