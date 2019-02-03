@@ -6,16 +6,16 @@ require 'sqlite3'
 
 
 configure do
-	db = SQLite3::Database.new 'BarberShop.sqlite'	
-	db.execute 'CREATE TABLE IF NOT EXISTS
+		db = SQLite3::Database.new 'BarberShop.sqlite'
+		db.execute 'CREATE TABLE IF NOT EXISTS
 		"users"
 		(
 		"id" INTEGER PRIMARY KEY AUTOINCREMENT,
-		"Name" TEXT,
-		"Phone" TEXT,
-		"Datestamp" TEXT,
-		"Barber" TEXT,
-		"Color" TEXT)';
+		"username" TEXT,
+		"phone" TEXT,
+		"datestamp" TEXT,
+		"barber" TEXT,
+		"color" TEXT)';
 end
 
 
@@ -63,24 +63,25 @@ post '/visit' do
 #				end
 #			end
 
-@error = hh.select {|key,_| params[key] == ""}.values.join(",")
+	@error = hh.select {|key,_| params[key] == ""}.values.join(",")
 	
 	if @error != ''
 		return erb :visit
 	end
 
+	db = get_db
 	db.execute 'insert into
 	users
-	(
-		Name,
-		Phone,
-		Datestamp,
-		Barber,
-		Color
-	)
-		values(?, ?, ?, ?, ?)', [@name,@phone,@datetime,@barber,@color]
+	 (
+	 	username,
+	 	phone,
+	 	datestamp,
+	 	barber,
+		color
+	 )
+	 	values(?, ?, ?, ?, ?)', [@username,@phone,@datestamp,@barber,@color]
 
-		@title 	=	"Thank You"
+	 	@title 	=	"Thank You"
 		@message = "Dear #{@username}, your master is #{@barber}, we'll be waiting for you at #{@date}, Color:#{@color}"
 		
 
@@ -90,11 +91,14 @@ post '/visit' do
 		f.close
 
 		erb :message
-
 		
 end
 
-post '/contacts' do
+ 	def get_db
+ 		return SQLite3::Database.new 'BarberShop.sqlite'
+ 	end
+
+ 	post '/contacts' do
 		# user_name, comments
 		@username 	= params[:username]
 		@comments 	= params[:comments]
