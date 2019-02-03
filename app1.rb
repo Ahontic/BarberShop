@@ -79,7 +79,7 @@ post '/visit' do
 	 	barber,
 		color
 	 )
-	 	values(?, ?, ?, ?, ?)', [@username,@phone,@datestamp,@barber,@color]
+	 	values(?, ?, ?, ?, ?)', [@username,@phone,@datetime,@barber,@color]
 
 	 	@title 	=	"Thank You"
 		@message = "Dear #{@username}, your master is #{@barber}, we'll be waiting for you at #{@date}, Color:#{@color}"
