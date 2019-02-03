@@ -27,6 +27,10 @@ get '/about' do
 	erb :about
 end
 
+get '/showusers' do
+	erb "Hello"
+end
+
 get '/visit' do
 	erb :visit
 end
@@ -95,7 +99,9 @@ post '/visit' do
 end
 
  	def get_db
- 		return SQLite3::Database.new 'BarberShop.sqlite'
+ 		db = SQLite3::Database.new 'BarberShop.sqlite'
+ 		db.results_as_hash = true
+ 		return db
  	end
 
  	post '/contacts' do
