@@ -32,22 +32,15 @@ end
 get '/about' do
 	erb :about
 end
+
 get '/showusers' do
+	db = get_db
+
+	@results = db.execute 'select*from Users order by id desc' 
+
 	erb :showusers
 end
 
-post '/showusers' do
-
-db = get_db
-	db.execute 'select * from Users' do |row|
-		print row['Name']
-		print "\t-\t"
-		print row['Phone']
-		print "\t-\t"
-		puts row['DateStamp']
-		puts "==========="
-	 	
-end
 
 get '/visit' do
 	erb :visit
@@ -61,14 +54,14 @@ post '/visit' do
 		# user_name, phone, date_time
 		@username 	= params[:username]
 		@phone 		= params[:phone]
-		@date 		= params[:date]
+		@datetime 	= params[:datetime]
 		@barber		= params[:barber]
 		@color		= params[:color]
 
 		hh = { 
 				:username => 'Введите имя', 
 				:phone => 'Введите телефон',
-				:date => 'Выберите дату'
+				:datetime => 'Выберите дату'
 
 			}
 
@@ -104,12 +97,12 @@ post '/visit' do
 	 	values(?, ?, ?, ?, ?)', [@username,@phone,@datetime,@barber,@color]
 
 	 	@title 	=	"Thank You"
-		@message = "Dear #{@username}, your master is #{@barber}, we'll be waiting for you at #{@date}, Color:#{@color}"
+		@message = "Dear #{@username}, your master is #{@barber}, we'll be waiting for you at #{@datetime}, Color:#{@color}"
 		
 
 		
 		f = File.open './public/users.txt', 'a'
-		f.write "Barber: #{:barber} User: #{@username}, Phone: #{@phone}, Date and time: #{@date}, @{color}.\n"
+		f.write "Barber: #{:barber} User: #{@username}, Phone: #{@phone}, Date and time: #{@datetime}, @{color}.\n"
 		f.close
 
 		erb :message
@@ -132,7 +125,7 @@ end
     if @error != ''	
         return erb :contacts
     end
-		@message = "Dear #{@username}, we'll be waiting for you at #{@date}"
+		@message = "Dear #{@username}, we'll be waiting for you at #{@datetime}"
 		
 
 		f = File.open './public/contacts.txt', 'a'
@@ -140,4 +133,3 @@ end
 		f.close
 
 	end
-end

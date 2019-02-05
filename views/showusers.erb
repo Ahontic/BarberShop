@@ -1,33 +1,27 @@
 <h2>Список записавшихся</h2>
 
 	<table class="table table-dark">
-  <thead class="table-dark">
+		<thead class="table-dark">
+				
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Date</th>
+      <th scope="col">Barber</th>
+      <th scope="col">Color</th>
     </tr>
   </thead>
   <tbody>
+  	<% @results.each do |row| %>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+    	<td><%= row['username'] %></td>
+    	<td><%= row['Phone'] %></td>
+      	<td><%= row['Datestamp'] %></td>
+      <td><%= row['Barber'] %></td>
+      <td><%= row['Color'] %></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    
+    <% end%>
   </tbody>
 </table>
 

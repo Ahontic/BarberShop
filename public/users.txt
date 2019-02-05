@@ -7,3 +7,10 @@ Barber: barber User: Yas, Phone: 747474, Date and time: 2019-05-24, @{color}.
 Barber: barber User: Asdfghh, Phone: 433432323, Date and time: 2019-02-23, @{color}.
 Barber: barber User: Gus, Phone: 555555555555, Date and time: 2019-02-01, @{color}.
 Barber: barber User: Vasya, Phone: 123123654, Date and time: 2019-02-24, @{color}.
+Barber: barber User: qwerty, Phone: 123456, Date and time: 2019-02-01, @{color}.
+Barber: barber User: fsfsdf@mail.ru, Phone: 1111111, Date and time: 2019-02-24, @{color}.
+Barber: barber User: admin, Phone: 43343, Date and time: 2019-02-17, @{color}.
+Barber: barber User: Anatoliy, Phone: 65656, Date and time: , @{color}.
+Barber: barber User: Anatoliy, Phone: 65656, Date and time: 2019-02-03, @{color}.
+Barber: barber User: ggdfgfd, Phone: 5555555556767, Date and time: , @{color}.
+Barber: barber User: ggdfgfd, Phone: 5555555556767, Date and time: 2019-02-24, @{color}.
