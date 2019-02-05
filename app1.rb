@@ -4,6 +4,11 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'sqlite3'
 
+	def get_db
+ 		db = SQLite3::Database.new 'BarberShop.sqlite'
+ 		db.results_as_hash = true
+ 		return db
+ 	end
 
 configure do
 		db = SQLite3::Database.new 'BarberShop.sqlite'
@@ -16,7 +21,8 @@ configure do
 		"datestamp" TEXT,
 		"barber" TEXT,
 		"color" TEXT)';
-end
+
+		end
 
 
 get '/' do
@@ -26,9 +32,21 @@ end
 get '/about' do
 	erb :about
 end
-
 get '/showusers' do
-	erb "Hello"
+	erb :showusers
+end
+
+post '/showusers' do
+
+db = get_db
+	db.execute 'select * from Users' do |row|
+		print row['Name']
+		print "\t-\t"
+		print row['Phone']
+		print "\t-\t"
+		puts row['DateStamp']
+		puts "==========="
+	 	
 end
 
 get '/visit' do
@@ -98,13 +116,7 @@ post '/visit' do
 		
 end
 
- 	def get_db
- 		db = SQLite3::Database.new 'BarberShop.sqlite'
- 		db.results_as_hash = true
- 		return db
- 	end
-
- 	post '/contacts' do
+	post '/contacts' do
 		# user_name, comments
 		@username 	= params[:username]
 		@comments 	= params[:comments]
@@ -127,4 +139,5 @@ end
 		f.write "User: #{@username}, Comment: #{@comments}\n"
 		f.close
 
+	end
 end
