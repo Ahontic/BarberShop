@@ -14,3 +14,4 @@ Barber: barber User: Anatoliy, Phone: 65656, Date and time: , @{color}.
 Barber: barber User: Anatoliy, Phone: 65656, Date and time: 2019-02-03, @{color}.
 Barber: barber User: ggdfgfd, Phone: 5555555556767, Date and time: , @{color}.
 Barber: barber User: ggdfgfd, Phone: 5555555556767, Date and time: 2019-02-24, @{color}.
+Barber: barber User: Awww, Phone: 33442211, Date and time: 2019-02-24, @{color}.

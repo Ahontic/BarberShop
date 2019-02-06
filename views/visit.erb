@@ -2,12 +2,6 @@
 
 <form action="/visit" method="POST">
 
-  <select name="barber" class="custom-select custom-select-lg mb-3">
-    <option selected>Выберите вашего мастера</option>
-    <option <%= @barber == 'Walter White' ? 'selected' : '' %> value="Walter White">Walter White</option>
-    <option <%= @barber == 'Jessie Pinkman' ? 'selected' : '' %> value="Jessie Pinkman">Jessie Pinkman</option>
-    <option <%= @barber == 'Gus Fring' ? 'selected' : '' %> value="Gus Fring">Gus Fring</option>
-  </select>
 
   <div class="form-group">
     <label>Ваше имя</label>
@@ -23,6 +17,21 @@
     <label>Когда вас ждать?</label>
     <input name='datetime' type="date" class="form-control" placeholder="Введите дату и время" value="<%= @datetime %>">
   </div>
+
+  <div class="form-group">
+    <label>Выберите вашего мастера</label>
+  <select name="barber" class="form-control">
+        
+     <!--  <option <%= @barber == 'Walter White' ? 'selected' : '' %> value="Walter White">Walter White</option>
+    <option <%= @barber == 'Jessie Pinkman' ? 'selected' : '' %> value="Jessie Pinkman">Jessie Pinkman</option>
+    <option <%= @barber == 'Gus Fring' ? 'selected' : '' %> value="Gus Fring">Gus Fring</option> -->
+
+    <% @barbers.each do |item| %>
+    <option <%= @barber == item['name'] ? 'selected' : '' %>><%= item['name'] %></option>
+    <% end %>
+
+  </select>
+</div>
   
   <div class="form-group">
     <label>Выберите цвет покраски?</label>
